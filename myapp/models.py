@@ -1,0 +1,13 @@
+from django.db import models
+
+
+
+class User(models.Model):
+        name = models.CharField(max_length=100)
+        familyname = models.CharField(max_length=100)
+        password = models.CharField(max_length=100)
+        username = models.CharField(max_length=100)
+        gender = models.CharField(max_length=6)
+        email = models.CharField(max_length=150)
+
+
