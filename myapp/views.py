@@ -76,8 +76,8 @@ def gameq4clone(request):
 @csrf_exempt
 class gameq2 :
         board_player = [[ '-' for i in range(9)] for j in range(9)]
-        board_hwall = [['-' for i in range(9)] for j in range(9)]#ofoghi j+1
-        board_vwall = [['-' for i in range(9)]for j in range(9)]#amodi i-1 
+        board_hwall = [['-' for i in range(9)] for j in range(9)]
+        board_vwall = [['-' for i in range(9)]for j in range(9)]
         board_point = [['-' for i in range(8)]for j in range(8)]
         board_player[8][4] = '*'
         board_player[0][4] = '+'
@@ -101,66 +101,27 @@ class gameq2 :
                 j = int(data['i'])
                 u = int(data['k'])
                 k = int(data['u'])
-                #if(self.turn==True):
-                 #       character1='+'
-                  #      character2='*'
-                #else:
-                 #       character1='*'
-                  #      character2='+'
+                
                 if(gameq2.board_player[i][j] == '-'):
                       print('mohi')
-                      if((u-i==1) and (k==j) and gameq2.board_hwall[i][j]=='-') :#paeen
+                      if((u-i==1) and (k==j) and gameq2.board_hwall[i][j]=='-'):
                                 gameq2.board_player[i][j] = '+'#character1
                                 gameq2.board_player[u][k] = '-'
                                 print(gameq2.board_player)
                                 return HttpResponse('True')
-                      elif((i-u==1)and(k==j) and gameq2.board_hwall[u][k]=='-'):#bala
+                      elif((i-u==1)and(k==j) and gameq2.board_hwall[u][k]=='-'):
                                 gameq2.board_player[i][j] = '+'#character1
                                 gameq2.board_player[u][k] = '-'
                                 print(gameq2.board_player)
                                 return HttpResponse('True')
-                      elif((j-k==1)and(i==u)and gameq2.board_vwall[u][k]=='-'):#chap
+                      elif((j-k==1)and(i==u)and gameq2.board_vwall[u][k]=='-'):
                                 gameq2.board_player[i][j] = '+'#character1
                                 gameq2.board_player[u][k] = '-'
                                 return HttpResponse('True')
-                      elif((k-j==1)and(i==u)and gameq2.board_vwall[i][j]=='-'):#raast
+                      elif((k-j==1)and(i==u)and gameq2.board_vwall[i][j]=='-'):
                                 gameq2.board_player[i][j] = '+'#character1
                                 gameq2.board_player[u][k] = '-'
                                 return HttpResponse('True')
-                      #elif((j-k==1)and(i-u==1)and gameq2.board_hwall[u][k]=='+' and gameq2.board_hwall[u][k-1]=='+'and gameq2.board_hwall[u][k+1]=='-' and gameq2.board_player[u][k+1]=='*') :#bala-chap
-                       #         gameq2.board_player[i][j]='+'#character1
-                       #         gameq2.board_player[u][k]='-'
-                       #         return HttpResponse('True')
-                      #elif((k-j==1)and(i-u==1)and gameq2.board_hwall[u][k]=='+' and gameq2.board_hwall[u][k+1]=='+'and gameq2.board_hwall[u][k-1]=='-' and gameq2.board_player[u][k-1]=='*'):#bala_raast
-                       #         gameq2.board_player[i][j]='+'
-                       #         gameq2.board_player[u][k]='-'
-                       #         return HttpResponse('True')
-                      #elif((j-k==1)and(u-i==1)and gameq2.board_hwall[u-1][k]=='+'and gameq2.board_hwall[u-1][k-1]=='+' and gameq2.board_player[u][k+1]=='*' and gameq2.board_player[u-1][k+1]=='-'):#paeen_chap
-                       #         gameq2.board_player[i][j]='+'
-                        #        gameq2.board_player[u][k]='-'
-                         #       return HttpResponse('True')
-                      #elif((k-j==1)and(u-i==1)and gameq2.board_hwall[u-1][k]=='+'and gameq2.board_hwall[u-1][k+1]=='+' and gameq2.board_hwall[u-1][k-1]=='-' and gameq2.board_player[u][k-1]=='*'):#paeen_raast
-                       #         gameq2.board_player[i][j]='*'
-                        #        gameq2.board_player[u][k]='-'
-                         #       return HttpResponse('True')
-                      #elif((u-i==2)and(j==k)and gameq2.board_player[u-1][j]=='*' and gameq2.board_hwall[u-1][j]=='-' and gameq2.board_hwall[u][k]=='-'):#paeen
-                       #         gameq2.board_player[i][j]='+'
-                        #        gameq2.board_player[u][k]='-'
-                         #       return HttpResponse('True')
-                     # elif((i-u==2)and (j==k) and gameq2.board_player[u+1][j]=='*' ):#bala
-                      #          gameq2.board_player[i][j]='+'
-                       #         gameq2.board_player[u][k]='-'
-                        #        return HttpResponse('True')
-                      #elif((j-k==2)and(i==u) and gameq2.board_player[u][k+1]=='*'):#chapp
-                       #         gameq2.board_player[i][j]='+'
-                        #        gameq2.board_player[u][k]='-'
-                         #       return HttpResponse('True')
-                      #elif((k-j==2)and(i==u) and gameq2.board_player[u][k-1]=='*'):#raast
-                       #         gameq2.board_player[i][j]='+'
-                        #        gameq2.board_player[u][k]='-'
-                         #       return HttpResponse('True')"""
-                      #return HttpResponse('False')
-                #return HttpResponse('False')
         @csrf_exempt 
         def isvalidvwall(request):#amodi
                 data=request.POST.dict()
@@ -238,63 +199,63 @@ class gameq4 :
                         character1 = '#'
                         character2 = ['+', '&', '*']
                 if(self.board_player[i][j] == '-'):
-                      if((u-i==1) and (k==j) and self.board_hwall[i][j]=='-') :#paeen
+                      if((u-i==1) and (k==j) and self.board_hwall[i][j]=='-') :
                                 self.board_player[i][j] = character1
                                 self.board_player[u][k] = '-'
                                 return True
-                      elif((i-u==1)and(k==j) and self.board_hwall[u][k]=='-'):#bala
+                      elif((i-u==1)and(k==j) and self.board_hwall[u][k]=='-'):
                                 self.board_player[i][j] = character1
                                 self.board_player[u][k] = '-'
                                 return True
-                      elif((j-k==1)and(i==u)and self.board_vwall[u][k]=='-'):#chap
+                      elif((j-k==1)and(i==u)and self.board_vwall[u][k]=='-'):
                                 self.board_player[i][j] = character1
                                 self.board_player[u][k] = '-'
                                 return True
-                      elif((k-j==1)and(i==u)and self.board_vwall[i][j]=='-'):#raast
+                      elif((k-j==1)and(i==u)and self.board_vwall[i][j]=='-'):
                                 self.board_player[i][j] = character1
                                 self.board_player[u][k] = '-'
                                 return True
                       elif((j-k==1)and(i-u==1)and self.board_hwall[u][k]=='+' and 
                         self.board_hwall[u][k-1]=='+' and (self.board_player[u][k+1]==character2[0] or
-                        self.board_player[u][k+1]==character2[1] or self.board_player[u][k+1]==character2[2])) :#bala-chap
+                        self.board_player[u][k+1]==character2[1] or self.board_player[u][k+1]==character2[2])):
                                 self.board_player[i][j] = character1
                                 self.board_player[u][k] = '-'
                                 return True
                       elif((k-j==1)and(i-u==1)and self.board_hwall[u][k]=='+' and 
                            self.board_hwall[u][k+1]=='+'and (self.board_player[u][k-1]==character2[0] or
-                           self.board_player[u][k-1]==character2[1] or self.board_player[u][k-1]==character2[2])):#bala_raast
+                           self.board_player[u][k-1]==character2[1] or self.board_player[u][k-1]==character2[2])):
                                 self.board_player[i][j] = character1
                                 self.board_player[u][k] = '-'
                                 return True
                       elif((j-k==1)and(u-i==1)and self.board_hwall[u-1][k]=='+'and
                           self.board_hwall[u-1][k-1]=='+' and (self.board_player[u][k+1]==character2[0] or
-                          self.board_player[u][k+1]==character2[1] or self.board_player[u][k+1]==character2[2])):#paeen_chap
+                          self.board_player[u][k+1]==character2[1] or self.board_player[u][k+1]==character2[2])):
                                 self.board_player[i][j] = character1
                                 self.board_player[u][k] = '-'
                                 return True
                       elif((k-j==1)and(u-i==1)and self.board_hwall[u-1][k]=='+'and 
                           self.board_hwall[u-1][k+1]=='+' and (self.board_player[u][k-1]==character2[0] or
-                          self.board_player[u][k-1]==character2[1] or self.board_player[u][k-1]==character2[2])):#paeen_raast
+                          self.board_player[u][k-1]==character2[1] or self.board_player[u][k-1]==character2[2])):
                                 self.board_player[i][j] = character1
                                 self.board_player[u][k] = '-'
                                 return True
                       elif((u-i==2)and(j==k)and (self.board_player[u-1][j]==character2[0] or 
-                           self.board_player[u-1][j]==character2[1] or self.board_player[u-1][j]==character2[2])):#paeen
+                           self.board_player[u-1][j]==character2[1] or self.board_player[u-1][j]==character2[2])):
                                 self.board_player[i][j] = character1
                                 self.board_player[u][k] = '-'
                                 return True
                       elif((i-u==2)and (j==k) and (self.board_player[u+1][j]==character2[0] or
-                            self.board_player[u+1][j]==character2[1] or self.board_player[u+1][j]==character2[2])):#bala
+                            self.board_player[u+1][j]==character2[1] or self.board_player[u+1][j]==character2[2])):
                                 self.board_player[i][j] = character1
                                 self.board_player[u][k] = '-'
                                 return True
                       elif((j-k==2)and(i==u) and (self.board_player[u][k+1]==character2[0] or
-                           self.board_player[u][k+1]==character2[1] or self.board_player[u][k+1]==character2[2] )):#chapp
+                           self.board_player[u][k+1]==character2[1] or self.board_player[u][k+1]==character2[2] )):
                                 self.board_player[i][j] = character1
                                 self.board_player[u][k] = '-'
                                 return True
                       elif((k-j==2)and(i==u) and (self.board_player[u][k-1]==character2[0] or
-                           self.board_player[u][k-1]==character2[1] or self.board_player[u][k-1]==character2[2])):#raast
+                           self.board_player[u][k-1]==character2[1] or self.board_player[u][k-1]==character2[2])):
                                 self.board_player[i][j] = character1
                                 self.board_player[u][k] = '-'
                                 return True
@@ -310,7 +271,7 @@ class gameq4 :
                                 return True
                         return False
                 return False
-        def isvalidhwall(self,i,j):#ofoghi
+        def isvalidhwall(self,i,j):
                 i,j=j-1,i
                 if(j+1 in range(9) and self.board_hwall[i][j]=='-' and self.board_hwall[i][j+1]=='-'):
                         if(self.board_point[i][j]=='-'):
